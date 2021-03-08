@@ -5,6 +5,9 @@ const path = require("path")
 const cors = require("cors")
 require("dotenv").config()
 
+// get country file location from env var file
+const COUNTRIES_SRC = process.env.COUNTRIES_SRC
+
 const app = express()
 app.use(json())
 app.use(cors())
@@ -22,6 +25,6 @@ const readFile = async location => {
 }
 // send data in response to get request
 app.get("/", async (_req, res) => {
-  const data = await readFile("./countries.json")
+  const data = await readFile(COUNTRIES_SRC)
   res.status(200).send(data)
 })
