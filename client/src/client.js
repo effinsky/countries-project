@@ -1,4 +1,3 @@
-
 const listContainer = document.querySelector("#list-container")
 const countryList = listContainer.querySelector("#country-list")
 const section = document.querySelector("#section")
@@ -16,73 +15,73 @@ const renderDescBtn = document.querySelector("#render-desc")
 renderDescBtn.addEventListener("click", renderProjectDesc)
 
 async function renderCountries() {
-	if (projDescShown) {
-		hideProjDesc()
-	}
-	const countries = await fetchData("http://localhost:666")
-	const listElements = countries.map(({ name, code }) => `${name} :: ${code}`)
+  if (projDescShown) {
+    hideProjDesc()
+  }
+  const countries = await fetchData("http://localhost:666")
+  const listElements = countries.map(({ name, code }) => `${name} :: ${code}`)
 
-	listElements.forEach(item => {
-		const li = document.createElement("li")
-		li.classList.add("list-item")
-		li.textContent = item
-		countryList.append(li)
-	})
+  listElements.forEach(item => {
+    const li = document.createElement("li")
+    li.classList.add("list-item")
+    li.textContent = item
+    countryList.append(li)
+  })
 
-	toggleRenderCountries(
-		"click",
-		renderCountries,
-		hideCountries,
-		"hide countries"
-	)
-	countriesShown = true
+  toggleRenderCountries(
+    "click",
+    renderCountries,
+    hideCountries,
+    "hide countries"
+  )
+  countriesShown = true
 }
 
 async function fetchData(url) {
-	const response = await fetch(url)
-	return await response.json()
+  const response = await fetch(url)
+  return await response.json()
 }
 
 function hideCountries() {
-	countryList.innerHTML = ""
+  countryList.innerHTML = ""
 
-	toggleRenderCountries(
-		"click",
-		hideCountries,
-		renderCountries,
-		"show countries"
-	)
-	countriesShown = false
+  toggleRenderCountries(
+    "click",
+    hideCountries,
+    renderCountries,
+    "show countries"
+  )
+  countriesShown = false
 }
 
 function toggleRenderCountries(
-	eventType,
-	removedHandler,
-	addedHandler,
-	newTextContent
+  eventType,
+  removedHandler,
+  addedHandler,
+  newTextContent
 ) {
-	renderCountriesBtn.removeEventListener(eventType, removedHandler)
-	renderCountriesBtn.addEventListener(eventType, addedHandler)
-	renderCountriesBtn.textContent = newTextContent
+  renderCountriesBtn.removeEventListener(eventType, removedHandler)
+  renderCountriesBtn.addEventListener(eventType, addedHandler)
+  renderCountriesBtn.textContent = newTextContent
 }
 
 function renderProjectDesc() {
-	if (!projDescShown) {
-		if (countriesShown) {
-			hideCountries()
-		}
+  if (!projDescShown) {
+    if (countriesShown) {
+      hideCountries()
+    }
 
-		const projectDescTemplate = document
-			.querySelector("#proj-desc-template")
-			.content.cloneNode(true)
+    const projectDescTemplate = document
+      .querySelector("#proj-desc-template")
+      .content.cloneNode(true)
 
-		section.append(projectDescTemplate)
-		projDescShown = true
-	}
+    section.append(projectDescTemplate)
+    projDescShown = true
+  }
 }
 
 function hideProjDesc() {
-	const projDesc = document.querySelector("#proj-desc")
-	section.removeChild(projDesc)
-	projDescShown = false
+  const projDesc = document.querySelector("#proj-desc")
+  section.removeChild(projDesc)
+  projDescShown = false
 }
