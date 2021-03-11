@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script defer src="./bundle.js"></script>
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Country List</title>
+  </head>
+  <body>
+    <section id="section" class="section">
+      <h2 class="section-title">country list</h2>
+      <div class="btn-container">
+        <button id="toggle-items" class="btn btn-show"></button>
+        <button id="render-desc" class="btn"></a> view project description</button>
+      </div>
+      <div id="list-container">
+        <ul id="country-list" class="list"></ul>
+      </div>
+    </section>
+
+    <template id="proj-desc-template" ><p class="proj-desc" id="proj-desc">This is the project description. You'll see a simple frontend app written in vanilla JS, CSS, HTML that fetches data from a NODE JS backend that serves country list data from a local file. You can show and hide country data and display this project description. </p></template>
+  </body>
+</html>
