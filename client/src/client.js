@@ -5,14 +5,14 @@ const section = document.querySelector("#section")
 let countriesShown = false
 let projDescShown = false
 
-// render countries btn
-const renderCountriesBtn = document.querySelector("#toggle-items")
-renderCountriesBtn.addEventListener("click", renderCountries)
-renderCountriesBtn.textContent = "show countries"
+// btn to render countries
+const countriesRenderBtn = document.querySelector("#toggle-items")
+countriesRenderBtn.addEventListener("click", renderCountries)
+countriesRenderBtn.textContent = "show countries"
 
-// render proj desc btn
-const renderDescBtn = document.querySelector("#render-desc")
-renderDescBtn.addEventListener("click", renderProjectDesc)
+// btn to render proj desc
+const projDescRenderBtn = document.querySelector("#render-desc")
+projDescRenderBtn.addEventListener("click", renderProjectDesc)
 
 async function renderCountries() {
   if (projDescShown) {
@@ -60,9 +60,9 @@ function toggleRenderCountries(
   addedHandler,
   newTextContent
 ) {
-  renderCountriesBtn.removeEventListener(eventType, removedHandler)
-  renderCountriesBtn.addEventListener(eventType, addedHandler)
-  renderCountriesBtn.textContent = newTextContent
+  countriesRenderBtn.removeEventListener(eventType, removedHandler)
+  countriesRenderBtn.addEventListener(eventType, addedHandler)
+  countriesRenderBtn.textContent = newTextContent
 }
 
 function renderProjectDesc() {
